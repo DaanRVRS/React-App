@@ -1,0 +1,26 @@
+{
+  "name": "react-app",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true,
+  "dependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "4.0.3",
+    "server": "^1.0.38"
+  },
+  "description": "first react application",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "React-App"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Daan Reuvers",
+  "license": "ISC"
+}
