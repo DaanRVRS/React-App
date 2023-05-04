@@ -1,15 +1,16 @@
 import { DateTime } from "luxon";
 
-const API_KEY = "965468b797048978ad866ff2577ab5d2";
+const API_KEY = "a023ee5783c5702fb71512e79ec28698";
 const BASE_URL = "https://api.openweathermap.org/data/2.5"
+
+// https://api.openweathermap.org/data/2.5/onecall?lat=52.5244&lon=13.4105&exclude=current%2Cminutely%2Calerts&units=metric&appid=965468b797048978ad866ff2577ab5d2
 
 // retrieves data from api
 const getWeatherData = (infoType, searchParams) => {
     const url = new URL(BASE_URL + "/" + infoType);
-
-    url.search = new URLSearchParams({...searchParams, appid: API_KEY});
-    
-    return fetch(url).then((res) => res.json())
+    url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
+    return fetch(url)
+        .then((res) => res.json())
 };
 
 
@@ -24,6 +25,7 @@ const formatCurrentWeather = (data) => {
         weather,
         wind: {speed}
     } = data
+    console.log(data);
 
     const {main: details, icon} = weather[0];
 
@@ -34,7 +36,7 @@ const formatCurrentWeather = (data) => {
 
 // formats forecast weather
 const formatForecastWeather = (data) => {
-    let {timezone, daily, hourly} = data;
+    let { timezone, daily, hourly } = data;
     daily = daily.slice(1,6).map(d => {
         return {
             title: formatToLocalTime(d.dt, timezone, 'ccc'),
