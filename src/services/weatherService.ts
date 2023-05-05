@@ -78,7 +78,7 @@ const formatToLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local time
 
 
 // gives url with correct icon for weather display
-const iconUrlFromCode = (code) => "https://openweathermap.org/img/wn/${code}@2x.png";
+const iconUrlFromCode = (code) => `https://openweathermap.org/img/wn/${code}@2x.png`;
 
 
 
