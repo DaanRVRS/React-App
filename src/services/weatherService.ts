@@ -1,6 +1,7 @@
+import { icon } from "@fortawesome/fontawesome-svg-core";
 import { DateTime } from "luxon";
 
-const API_KEY = "a023ee5783c5702fb71512e79ec28698";
+const API_KEY = "9600fabb4491b4c7da4c7bf8494e1016";
 const BASE_URL = "https://api.openweathermap.org/data/2.5"
 
 // https://api.openweathermap.org/data/2.5/onecall?lat=52.5244&lon=13.4105&exclude=current%2Cminutely%2Calerts&units=metric&appid=965468b797048978ad866ff2577ab5d2
@@ -25,9 +26,11 @@ const formatCurrentWeather = (data) => {
         weather,
         wind: {speed}
     } = data
-    console.log(data);
+    // console.log(data);
 
     const {main: details, icon} = weather[0];
+
+    // console.log(data)
 
 
     return {lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, country, sunrise, sunset, details, icon, speed};
@@ -48,7 +51,7 @@ const formatForecastWeather = (data) => {
     hourly = hourly.slice(1,6).map(d => {
         return {
             title: formatToLocalTime(d.dt, timezone, 'hh:mm a'),
-            temp: d.temp.day,
+            temp: d.temp,
             icon: d.weather[0].icon
         }
     });
@@ -75,7 +78,8 @@ const formatToLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local time
 
 
 // gives url with correct icon for weather display
-const iconUrlFromCode = (code) => 'http://openweathermap.org/img/wn/${code}@2x.png';
+const iconUrlFromCode = (code) => "https://openweathermap.org/img/wn/${code}@2x.png";
+
 
 
 export default getFormattedWeatherData;

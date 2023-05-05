@@ -33,11 +33,11 @@ function App() {
 
         {weather && (
           <div>
-            <TimeAndLocation />
-            <TemperatureAndDetails />
+            <TimeAndLocation weather={weather} />
+            <TemperatureAndDetails weather={weather} />
 
-            <Forecast title="hourly forecast" />
-            <Forecast title="daily forecast" />
+            <Forecast title="hourly forecast" items={weather.hourly} />
+            <Forecast title="daily forecast" items={weather.daily} />
           </div>
         )}
       </div>
